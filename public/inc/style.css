@@ -1,0 +1,103 @@
+@charset "utf-8";
+body {
+    padding: 0px;
+    margin: 0px;
+    background-image: url("/img/back_ec.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header {
+    height: 16%;
+    width: 100%;
+    background-color: #5DA0BB;
+    color: #fcf513;
+}
+footer {
+    height: 40px;
+    width: 100%;
+    color: navy;
+    vertical-align: bottom;
+}
+input, textarea {
+    font-size: 100%;
+    vertical-align: text-top;
+}
+h1 {
+    padding-left: 5px;
+}
+.tb_list {
+    margin:auto;
+    padding:0;
+    border:0;
+    font-size: medium;
+}
+th, td {
+    padding: 12px;
+}
+.td_fti {
+    width: 40px;
+    padding: 2px;
+}
+.td_ftc {
+    width: 100%;
+    padding: 2px;
+    text-align: center;
+}
+.ft_100 {
+    width: 100%;
+    display: inline-block;
+}
+.ico {
+    float: left;
+    align-items:baseline;
+    margin:25px;
+    padding:0px;
+    width:80px;
+    height:80px;
+}
+.scroll {
+    background: rgba(0, 51, 102, 0.1);
+    padding: 5px;
+    border-spacing: 0;
+    border: 2px solid black;
+}
+.liste {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px;
+    border-spacing: 0;
+}
+.liste:nth-child(even){
+    background: rgba(0, 51, 102, 0.1);
+}
+.liste:hover {
+    color:black;
+    background:rgba(255,255,0,0.2);
+}
+.page {
+    font-size: 150%;
+    margin: 30px 60px 30px 60px;
+    min-width: 50%;
+    max-width: 90%;
+    min-height: 520px;
+}
+.contenu {
+    margin:auto;
+    overflow-y:auto;
+    max-height: 100%;
+    min-height: 50%;
+    min-width: 50%;
+    max-width: 90%;
+}
+button {
+    padding: 6px 32px 6px 6px;
+    text-align: center;
+    margin: 32px 12px;
+    transition-duration: 0.4s;
+    font-size: 100%;
+    cursor: pointer;
+}
+.sujet {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
