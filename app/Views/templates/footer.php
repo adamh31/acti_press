@@ -1,20 +1,29 @@
-<!-- Bas de page => ./Views/templates/footer.php -->
-            </div>
-        </div>
-        <footer>
-            <table class="ft_100">
-                <tr>
-                    <td class="td_fti">
-                        <img src="/img/ci4.svg" usemap="#ci4_doc" style="width:32px;height:32px;">
-                        <map name="ci4_doc">
-                            <area shape="rect" coords="0,0,32,32" alt="Documentation C4" href="https://codeigniter.com/user_guide/index.html">
-                        </map>
-                    </td>
-                    <td class="td_ftc">
-                        <em>CodeIgniter - Acti_Press - Par Adam, Rémi et Baptiste - <?php echo date("Y"); ?></em>
-                    </td>
-                    
-            </table>
-        </footer>
-    </body>
-</html>
+<link href="/inc/footer.css" type="text/css" rel="stylesheet">
+
+		<footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a class="link-1" href="#">Home</a>
+
+					<a href="#">New mail</a>
+
+					<a href="#">About</a>
+
+					<a href="#">Contact</a>
+				</p>
+
+				<p>Company ActiPress; 2022</p>
+			</div>
+
+		</footer>
