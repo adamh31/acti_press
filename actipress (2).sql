@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 05 oct. 2022 à 09:51
+-- Généré le : mer. 19 oct. 2022 à 08:29
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `boite` (
-  `LOGIN` char(64) NOT NULL,
+  `LOGIN` char(20) NOT NULL,
   `REÇUS` char(32) DEFAULT NULL,
   `EMIS` char(32) DEFAULT NULL,
   `USER_RECEIVED` char(32) DEFAULT NULL,
   `USER_SED` char(32) DEFAULT NULL,
-  `ID_BOITE` double NOT NULL
+  `ID_BOITE` char(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,8 +66,8 @@ CREATE TABLE `contenir` (
 --
 
 CREATE TABLE `infos_perso` (
-  `LOGIN` char(32) NOT NULL,
-  `ID_MESS_CONTACT` double NOT NULL,
+  `LOGIN` char(20) NOT NULL,
+  `ID_MESS_CONTACT` char(32) NOT NULL,
   `MDP` char(32) DEFAULT NULL,
   `NOM` char(32) DEFAULT NULL,
   `PRÉNOM` char(32) DEFAULT NULL,
@@ -90,7 +90,7 @@ CREATE TABLE `messages` (
   `TEXTE` char(32) DEFAULT NULL,
   `BOOL_SUPP` tinyint(1) DEFAULT NULL,
   `DATE_SUPP` date DEFAULT NULL,
-  `ID_MESSAGE` double NOT NULL
+  `ID_MESSAGE` char(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -101,7 +101,8 @@ CREATE TABLE `messages` (
 -- Index pour la table `boite`
 --
 ALTER TABLE `boite`
-  ADD PRIMARY KEY (`ID_BOITE`);
+  ADD PRIMARY KEY (`ID_BOITE`),
+  ADD UNIQUE KEY `LOGIN` (`LOGIN`);
 
 --
 -- Index pour la table `contact`
@@ -113,19 +114,49 @@ ALTER TABLE `contact`
 -- Index pour la table `contenir`
 --
 ALTER TABLE `contenir`
-  ADD PRIMARY KEY (`ID_MESSAGE`,`ID_BOITE`);
+  ADD PRIMARY KEY (`ID_MESSAGE`,`ID_BOITE`),
+  ADD KEY `ID_BOITE` (`ID_BOITE`);
 
 --
 -- Index pour la table `infos_perso`
 --
 ALTER TABLE `infos_perso`
-  ADD PRIMARY KEY (`LOGIN`);
+  ADD PRIMARY KEY (`LOGIN`),
+  ADD UNIQUE KEY `ID_MESS_CONTACT` (`ID_MESS_CONTACT`);
 
 --
 -- Index pour la table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`ID_MESSAGE`);
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `boite`
+--
+ALTER TABLE `boite`
+  ADD CONSTRAINT `boite_ibfk_1` FOREIGN KEY (`LOGIN`) REFERENCES `infos_perso` (`LOGIN`);
+
+--
+-- Contraintes pour la table `contenir`
+--
+ALTER TABLE `contenir`
+  ADD CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`ID_BOITE`) REFERENCES `boite` (`ID_BOITE`);
+
+--
+-- Contraintes pour la table `infos_perso`
+--
+ALTER TABLE `infos_perso`
+  ADD CONSTRAINT `infos_perso_ibfk_1` FOREIGN KEY (`ID_MESS_CONTACT`) REFERENCES `contact` (`ID_MESS_CONTACT`);
+
+--
+-- Contraintes pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`ID_MESSAGE`) REFERENCES `contenir` (`ID_MESSAGE`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
