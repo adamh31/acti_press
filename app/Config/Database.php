@@ -33,9 +33,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'processeur',
+        'username' => 'actipress',
+        'password' => 'actipress',
+        'database' => 'actipress',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

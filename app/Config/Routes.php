@@ -36,15 +36,14 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');  
+$routes->get('/', 'Home::index');   
 $routes->get('pages', 'Pages::view');
-$routes->get('fabricant', 'Fabricant::index');
-$routes->get('fabricant/lister', 'Fabricant::lister');
-$routes->get('fabricant/modifier/(:any)', 'Fabricant::modifier/$1');
-$routes->get('fabricant/ajouter', 'Fabricant::ajouter');
-$routes->get('fabricant/visualiser(:any)', 'Fabricant::visualiser/$1$');
-$routes->post('fabricant/update', 'Fabricant::update');
-$routes->post('fabricant/add', 'Fabricant::add');
+$routes->get('contact', 'Pages::contact');
+$routes->get('login', 'Pages::login');
+$routes->get('messagerie/login', 'Messagerie::login');
+$routes->post('login/login', 'Login::signIn');
+$routes->get('messagerie/see_mail', 'Messagerie::see_mail');
+$routes->get('messagerie/contact', 'Messagerie::contact');
 
 /*
  * --------------------------------------------------------------------
