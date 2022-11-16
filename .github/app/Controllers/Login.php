@@ -24,7 +24,7 @@ public function signIn()
                     'isLogged' => TRUE
                 ];
                 $session->set($sessionData);
-                return redirect()->to(base_url('Home'));
+                return redirect()->to(base_url('home'));
             } else {
                 $session->setFlashdata('msg', 'Erreur utilisateur ou mot de passe');
                 echo 'erreur1';
