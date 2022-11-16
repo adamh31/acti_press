@@ -36,12 +36,13 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->get('messagerie/login', 'Messagerie::login');
+$routes->post('messagerie/login', 'Login::signIn');
+$routes->get('menu', 'MenuPrincipalController::menu',['filters' => 'authGuard']);
 $routes->get('/', 'Home::index');   
 $routes->get('pages', 'Pages::view');
 $routes->get('contact', 'Pages::contact');
 $routes->get('login', 'Pages::login');
-$routes->get('messagerie/login', 'Messagerie::login');
-$routes->post('login/login', 'Login::signIn');
 $routes->get('messagerie/see_mail', 'Messagerie::see_mail');
 $routes->get('messagerie/contact', 'Messagerie::contact');
 

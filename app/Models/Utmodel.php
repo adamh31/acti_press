@@ -8,11 +8,11 @@ use CodeIgniter\Model;
 class Utmodel extends Model
 {
     protected $table      = 'infos_perso';
-    protected $primaryKey = 'login';
+    protected $primaryKey = 'id_login';
 
     protected $returnType     = 'array'; // 'object'
     protected $useSoftDeletes = false; // true => delete_at ...
 
-    protected $allowedFields = ['login,id_mess_contact,mdp,nom,prénom,type_de_profils'];
+    protected $allowedFields = ['LOGIN,ID_MESS_CONTACT,MDP,NOM,PRÉNOM,TYPE_DE_PROFILS,pass_hash,id_login'];
 
 }

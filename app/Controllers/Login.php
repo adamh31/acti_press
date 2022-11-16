@@ -1,9 +1,15 @@
-<?php
+<?php  namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Utmodel;
  
 class Login extends Controller
 {
+     public function signer() {
+        $data['title'] = "Page de connexion";
+        echo view('/Templates/Header', $data);
+        echo view('pages/login', $data);
+        echo view('Templates/Footer', $data);
+    }
 public function signIn() 
     {
         $session = session();
@@ -24,7 +30,7 @@ public function signIn()
                     'isLogged' => TRUE
                 ];
                 $session->set($sessionData);
-                return redirect()->to(base_url('contact'));
+                return redirect()->to(base_url('home'));
             } else {
                 $session->setFlashdata('msg', 'Erreur utilisateur ou mot de passe');
                 echo 'erreur1';

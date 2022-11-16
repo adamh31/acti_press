@@ -57,6 +57,8 @@
 
                 <p>Company ActiPress; 2022</p>
             </div>
+        <?php include ('bandeau_lateral.php'); ?>
+
 
         </footer>
   

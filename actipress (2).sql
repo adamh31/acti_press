@@ -71,6 +71,7 @@ CREATE TABLE `infos_perso` (
   `MDP` char(32) DEFAULT NULL,
   `NOM` char(32) DEFAULT NULL,
   `PRÉNOM` char(32) DEFAULT NULL,
+  `id_login` int(32) DEFAULT NULL,
   `TYPE_DE_PROFILS` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -115,14 +116,14 @@ ALTER TABLE `contact`
 --
 ALTER TABLE `contenir`
   ADD PRIMARY KEY (`ID_MESSAGE`,`ID_BOITE`),
-  ADD KEY `ID_BOITE` (`ID_BOITE`);
+
 
 --
 -- Index pour la table `infos_perso`
 --
 ALTER TABLE `infos_perso`
-  ADD PRIMARY KEY (`LOGIN`),
-  ADD UNIQUE KEY `ID_MESS_CONTACT` (`ID_MESS_CONTACT`);
+  ADD PRIMARY KEY (`id_login`),
+  
 
 --
 -- Index pour la table `messages`
