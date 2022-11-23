@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 09 nov. 2022 à 11:10
+-- Généré le : mer. 23 nov. 2022 à 10:24
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -66,34 +66,23 @@ CREATE TABLE `contenir` (
 --
 
 CREATE TABLE `infos_perso` (
-  `LOGIN` char(20) NOT NULL,
+  `login` char(20) NOT NULL,
   `ID_MESS_CONTACT` char(32) NOT NULL,
   `MDP` char(32) DEFAULT NULL,
-  `NOM` char(32) DEFAULT NULL,
-  `PRÉNOM` char(32) DEFAULT NULL,
+  `Nom` char(32) DEFAULT NULL,
+  `Prenom` char(32) DEFAULT NULL,
+  `id_login` int(32) NOT NULL,
   `TYPE_DE_PROFILS` double DEFAULT NULL,
-  `pass_hash` varchar(255) NOT NULL
+  `pass_hash` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `infos_perso`
 --
 
-INSERT INTO `infos_perso` (`LOGIN`, `ID_MESS_CONTACT`, `MDP`, `NOM`, `PRÉNOM`, `TYPE_DE_PROFILS`, `pass_hash`) VALUES
-('test', 'test', 'test', 'a', 'a', 1, '$2y$07$vvhrSAqnO4VZUvqlIJY31u5MoxiRHos4YvngrzO.lVpYc4a8dHHhG');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `message`
---
-
-CREATE TABLE `message` (
-  `id_expe` int(64) NOT NULL,
-  `id_dest` int(64) NOT NULL,
-  `titre` char(64) NOT NULL,
-  `contenu` char(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `infos_perso` (`login`, `ID_MESS_CONTACT`, `MDP`, `Nom`, `Prenom`, `id_login`, `TYPE_DE_PROFILS`, `pass_hash`) VALUES
+('test', '', 'test', 'test', 'test', 1, 1, '$2y$10$tRlbY3cs/cTCFgBkDAxNDuHXVckyn0P/vGMWdJGLrpqOrMnn9XzDG'),
+('remi.pontello', '', 'Unmotdepasselong1', 'pontello', 'remi', 2, 1, '$2y$10$YPr8r4W0AZHTfHuHnLPr0OIUAyo7Y95sjaGUfsvMBrboOFV6Xs2Ia');
 
 -- --------------------------------------------------------
 
@@ -135,21 +124,31 @@ ALTER TABLE `contact`
 -- Index pour la table `contenir`
 --
 ALTER TABLE `contenir`
-  ADD PRIMARY KEY (`ID_MESSAGE`,`ID_BOITE`),
+  ADD PRIMARY KEY (`ID_MESSAGE`),
   ADD KEY `ID_BOITE` (`ID_BOITE`);
 
 --
 -- Index pour la table `infos_perso`
 --
 ALTER TABLE `infos_perso`
-  ADD PRIMARY KEY (`LOGIN`),
-  ADD UNIQUE KEY `ID_MESS_CONTACT` (`ID_MESS_CONTACT`);
+  ADD PRIMARY KEY (`id_login`),
+  ADD KEY `ID_MESS_CONTACT` (`ID_MESS_CONTACT`);
 
 --
 -- Index pour la table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`ID_MESSAGE`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `infos_perso`
+--
+ALTER TABLE `infos_perso`
+  MODIFY `id_login` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées
@@ -159,19 +158,19 @@ ALTER TABLE `messages`
 -- Contraintes pour la table `boite`
 --
 ALTER TABLE `boite`
-  ADD CONSTRAINT `boite_ibfk_1` FOREIGN KEY (`LOGIN`) REFERENCES `infos_perso` (`LOGIN`);
+  ADD CONSTRAINT `boite_ibfk_1` FOREIGN KEY (`ID_BOITE`) REFERENCES `contenir` (`ID_BOITE`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `contact`
+--
+ALTER TABLE `contact`
+  ADD CONSTRAINT `contact_ibfk_1` FOREIGN KEY (`ID_MESS_CONTACT`) REFERENCES `infos_perso` (`ID_MESS_CONTACT`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `contenir`
 --
 ALTER TABLE `contenir`
-  ADD CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`ID_BOITE`) REFERENCES `boite` (`ID_BOITE`);
-
---
--- Contraintes pour la table `messages`
---
-ALTER TABLE `messages`
-  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`ID_MESSAGE`) REFERENCES `contenir` (`ID_MESSAGE`);
+  ADD CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`ID_MESSAGE`) REFERENCES `messages` (`ID_MESSAGE`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
