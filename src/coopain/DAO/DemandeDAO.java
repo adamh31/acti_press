@@ -18,6 +18,7 @@ import coopain.model.Commune;
  */
 public class DemandeDAO {
     
+    
     String BDD = "bdd_coopain";
     String url = "localhost/bdd_coopain";
     String user = "coopain";
@@ -30,6 +31,7 @@ public class DemandeDAO {
 }catch(Exception e){
     System.out.println("Impossible de se connecter aux demandes");
 }
+
     
 
 }
