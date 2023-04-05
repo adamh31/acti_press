@@ -193,7 +193,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ressources/file-invoice-dollar_80.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Gestion"/>
+        <Property name="text" type="java.lang.String" value="Demande"/>
         <Property name="toolTipText" type="java.lang.String" value="Acc&#xe9;der au module de gestion"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="iconTextGap" type="int" value="0"/>

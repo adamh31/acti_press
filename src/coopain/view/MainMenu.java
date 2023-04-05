@@ -134,7 +134,7 @@ public class MainMenu extends javax.swing.JFrame {
         gestion.setForeground(new java.awt.Color(204, 204, 204));
         gestion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/file-invoice-dollar_80.png"))); // NOI18N
-        gestion.setText("Gestion");
+        gestion.setText("Demande");
         gestion.setToolTipText("Accéder au module de gestion");
         gestion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gestion.setIconTextGap(0);
@@ -210,7 +210,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(info);
-        info.setBounds(20, 390, 108, 30);
+        info.setBounds(20, 390, 105, 30);
 
         abandon.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         abandon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/escape_20.png"))); // NOI18N
@@ -223,7 +223,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(abandon);
-        abandon.setBounds(542, 390, 132, 30);
+        abandon.setBounds(542, 390, 127, 30);
 
         uiBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/fec_dark.jpg"))); // NOI18N
         uiBackground.setMaximumSize(new java.awt.Dimension(700, 430));
