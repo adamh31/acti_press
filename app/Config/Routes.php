@@ -42,9 +42,11 @@ $routes->get('menu', 'MenuPrincipalController::menu',['filters' => 'authGuard'])
 $routes->get('/', 'Home::index');   
 $routes->get('pages', 'Pages::view');
 $routes->get('contact', 'Pages::contact');
+
 $routes->get('login', 'Pages::login');
 $routes->get('messagerie/see_mail', 'Messagerie::see_mail');
 $routes->get('messagerie/contact', 'Messagerie::contact');
+
 
 /*
  * --------------------------------------------------------------------
