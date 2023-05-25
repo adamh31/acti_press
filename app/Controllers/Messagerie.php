@@ -37,22 +37,22 @@ class Messagerie extends Controller
         echo view('Templates/Footer', $data);
     }
 
-    public function signIn() 
+    public function signin() 
     {
         $session = session();
         $model = new Utmodel();
-        $login = $this->request->getVar('login');
-        $password = $this->request->getVar('password');
-        $data = $model->where('login', $login)->first();
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('mot_de_passe');
+        $data = $model->where('email', $email)->first();
         if ($data) {
-            $pass = $data['pass_hash'];
+            $pass = $data['mot_de_passe'];
             $verify_pass = password_verify($password, $pass);
             if ($verify_pass) {
                 $sessionData = [
-                    'login' => $data['login'],
+                    'email' => $data['email'],
                     'Nom' => $data['Nom'],
                     'Prenom' => $data['Prenom'],
-                    'TYPE_DE_PROFILS' => $data['TYPE_DE_PROFILS'],
+                    
                    
                     'isLogged' => TRUE
                 ];

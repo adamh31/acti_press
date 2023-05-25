@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'actipress',
         'password' => 'actipress',
-        'database' => 'actipress',
+        'database' => 'actipressv2',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

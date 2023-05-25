@@ -3,6 +3,7 @@
 
 
   <?php
+session_start();
 
 {
 ?>
@@ -22,7 +23,7 @@ if(isset($_POST['submit']))
     $titre = $_POST['titre'];
     $message = $_POST['message'];
  
-    $requete = $bdd->prepare('SELECT * FROM infos_perso WHERE login = :destinataire');
+    $requete = $bdd->prepare('SELECT * FROM utilisateurs WHERE email = :destinataire');
     $requete->execute(array('destinataire' => $destinataire));
     $donnees = $requete->fetch();
     $requete->CloseCursor();
