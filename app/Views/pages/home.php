@@ -34,7 +34,7 @@ if(!$donnees)
 }
 elseif($donnees)
 {
-    $requete2 = $bdd->prepare('INSERT INTO messages(id_expe, id_dests, titre, contenu) VALUES(?,?,?,?)');
+    $requete2 = $bdd->prepare('INSERT INTO messages(id_expe, id_dest, titre, contenu) VALUES(?,?,?,?)');
     $requete2->execute(array($_SESSION['id'], $donnees['id'], $titre, $message));
     $requete2->CloseCursor();
     echo "Message envoyé!";
