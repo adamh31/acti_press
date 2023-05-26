@@ -12,13 +12,14 @@ class Login extends Controller
     }
 public function signIn() 
     {
+    
         $session = session();
         $model = new Utmodel();
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('mot_de_passe');
         $data = $model->where('email', $email)->first();
         if ($data) {
-            $pass = $data['mot_de_passe'];
+            $pass = $data['mot_de_passe_hash'];
             $verify_pass = password_verify($password, $pass);
             if ($verify_pass) {
                 $sessionData = [
@@ -28,6 +29,9 @@ public function signIn()
                     'isLogged' => TRUE
                 ];
                 $session->set($sessionData);
+                //$_SESSION['donnee_utilisateurs'] = $sessionData;
+               // $this->session->set_userdata($sessionData);
+                
                 return redirect()->to(base_url('pages'));
             } else {
                 $session->setFlashdata('msg', 'Erreur utilisateur ou mot de passe');

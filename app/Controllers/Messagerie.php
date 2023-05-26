@@ -37,7 +37,7 @@ class Messagerie extends Controller
         echo view('Templates/Footer', $data);
     }
 
-    public function signin() 
+   /* public function signin() 
     {
         $session = session();
         $model = new Utmodel();
@@ -71,13 +71,14 @@ class Messagerie extends Controller
             return redirect()->to(base_url('login'));
         }
     }
-
+*/
+    /*
     public function signOut() {
         $session = session();
         $session->destroy();
         return redirect()->to(base_url('login'));
     }
-
+*/
 
 
     public function index()  {

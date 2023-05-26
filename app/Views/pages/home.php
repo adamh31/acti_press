@@ -4,11 +4,12 @@
 
   <?php
 session_start();
+//echo $this->session->userdata('nom');
 
-{
 ?>
 <h2>Envoyer un message privé!</h2>
 <form action="message.php" method="post">
+<input type="text" name="expediteur" placeholder="mail de l'expediteur">
 <input type="text" name="destinataire" placeholder="mail du destinataire">
 <input type="text" name="titre" placeholder="Titre du message">
 <input type="text" name="message" placeholder="Contenu du message">
@@ -43,5 +44,5 @@ else
     echo "Une erreur est survenue.";
 }
 }
-}
+
 ?>
